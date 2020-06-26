@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import timerReducer from './timers-reducer';
+import timerReducer from './timers-Reducer'
 import selectTimerReducer from './select-timer-reducer';
 
-export const NEW_TIMER    = "NEW_TIMER"
+export const NEW_TIMER = "NEW_TIMER"
 export const TOGGLE_TIMER = "TOGGLE_TIMER"
 export const SELECT_TIMER = "SELECT_TIMER"
 

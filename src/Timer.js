@@ -7,6 +7,7 @@ class Timer {
         this.name = name;
         this.time = 0;
         this.isRunning  = false;
+        this.Timer = [];
     }
 }
 
