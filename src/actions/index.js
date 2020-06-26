@@ -1,6 +1,17 @@
-const NEW_TIMER = "NEW_TIMER"
-const TOGGLE_TIMER = "TOGGLE_TIMER"
-const SELECT_TIMER = "SELECT_TIMER"
+import { combineReducers } from 'redux';
+
+import timerReducer from './timers-reducer';
+import selectTimerReducer from './select-timer-reducer';
+
+export const NEW_TIMER    = "NEW_TIMER"
+export const TOGGLE_TIMER = "TOGGLE_TIMER"
+export const SELECT_TIMER = "SELECT_TIMER"
+
+
+export default combineReducers({
+    timers: timerReducer,             
+    selectedTimer: selectTimerReducer, 
+  });
 
 export const addTimer = (name) => {
     return {
