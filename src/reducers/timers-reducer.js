@@ -1,5 +1,5 @@
 // Import all of our actions
-import { NEW_TIMER, TOGGLE_TIMER } from '../actions';
+import { NEW_TIMER, TOGGLE_TIMER, UPDATE } from '../actions';
 
 const timerReducer = (state = [], action) => {
   switch (action.type) {
@@ -8,6 +8,13 @@ const timerReducer = (state = [], action) => {
       const name = action.payload.name ? action.payload.name : `Timer ${state.length}`
       return [...state, new Timer(name)]
 
+    case UPDATE:
+      return state.map((timer) => {
+        if (timer.isRunning) {
+          timer = { ...timer, time: timer.time += action.payload.deltaTime }
+        }
+        return timer
+      })
     case TOGGLE_TIMER:
       // Invert the isRunning property of timer at index, return a copy of state
       const newState = state.map((timer, index) => {
