@@ -7,10 +7,10 @@ import throttle from 'lodash/throttle'
 import { loadState, saveState } from './utils'
 import './App.css';
 
-[bold]import NewTimer from './components/new-timer'[/bold]
-[bold]import ListTimers from './components/list-timers'[/bold]
+import NewTimer from './components/new-timer'
+import ListTimers from './components/list-timers'
 
-const store = createStore(reducers);
+
 
 let lastUpdateTime = Date.now()
 setInterval(() => {
@@ -22,7 +22,7 @@ setInterval(() => {
 
 const persistedState = loadState()
 const store = createStore(reducers, persistedState)
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   saveState(store.getState())
 }, 1000));
 
@@ -34,8 +34,8 @@ class App extends Component {
           <header className="App-header">
             <h1 className="App-title">Welcome to React</h1>
           </header>
-[bold]            <NewTimer />[/bold]
-[bold]            <ListTimers />[/bold]         
+            <NewTimer />
+            <ListTimers />        
         </div>
       </Provider>
     )

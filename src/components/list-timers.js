@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import TimerView from './timer-view'
+import { selectTimer } from '../actions'
 
 class ListTimers extends Component {
-
+  constructor(props) {
+    super(props)
+  }
   render() {
     return (
       <div>
@@ -12,5 +16,12 @@ class ListTimers extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return { timers: state.timers }
+}
 
-export default ListTimers;
+const mapDispatchToProps = () => {
+  return { selectTimer }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(ListTimers)
